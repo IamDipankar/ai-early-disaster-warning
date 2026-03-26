@@ -1,0 +1,383 @@
+# বন্যা, ভারী বৃষ্টিপাত, আকস্মিক বন্যা, জলাবদ্ধতা, ভূমিধস ও নদীভাঙন RAG প্লেবুক :contentReference[oaicite:0]{index=0}
+
+**AI ভয়েস আর্লি ওয়ার্নিং, লাইভ সার্ভে এবং মানচিত্র-ভিত্তিক সিদ্ধান্ত সহায়তা এজেন্টের জন্য**
+
+বাংলাদেশের সরকারি সতর্কবার্তা পদ্ধতি, জনস্বাস্থ্য জরুরি নির্দেশনা, WASH টেকনিক্যাল নোট এবং জীবিকা-ভিত্তিক সুরক্ষা নির্দেশনা সমন্বয়ে প্রস্তুত।
+
+---
+
+## উদ্দেশ্য
+এই নথি একটি **Retrieval-Augmented Knowledge Base**, যা ভয়েস এজেন্টকে সাহায্য করবে:
+
+1. সরকারি ঝুঁকি ইনপুট ব্যাখ্যা করতে  
+2. সংক্ষিপ্ত ও প্রাসঙ্গিক পরামর্শ দিতে  
+3. লাইভ কল থেকে জরিপ তথ্য সংগ্রহ করতে  
+4. vulnerability ও impact mapping তৈরি করতে  
+
+---
+
+## গুরুত্বপূর্ণ অপারেটিং নিয়ম
+- সরকারি পূর্বাভাস, সতর্কতা ও evacuation নির্দেশ সর্বোচ্চ অগ্রাধিকার  
+- স্থানীয় কাস্টমাইজেশন করা যাবে  
+- কোনো সরকারি নির্দেশের বিরোধিতা করা যাবে না  
+
+---
+
+# ১. এই নথি কীভাবে ব্যবহার করবেন
+
+### RAG ব্যবহার নির্দেশনা
+- hazard routing → ঝুঁকির ধরন নির্ধারণ  
+- personalization → ঘর, জীবিকা, vulnerability অনুযায়ী কাস্টমাইজ  
+- response policy → ছোট ও কার্যকর বার্তা  
+- survey extraction → structured data তৈরি  
+
+### জরুরি পরিস্থিতি
+- পানি ঢোকা  
+- আটকে পড়া  
+- ভূমিধস  
+- সরতে না পারা  
+
+➡ সাথে সাথে **escalation mode**
+
+---
+
+# ২. কর্তৃত্বপূর্ণ লজিক
+
+## প্রধান উৎস
+- NEAP (Flood)  
+- FFWC  
+- BMD  
+
+---
+
+## No-regret Early Action
+- কাগজপত্র গুছানো  
+- পানি সংরক্ষণ  
+- ওষুধ প্রস্তুত  
+- গবাদিপশুর স্থান নির্ধারণ  
+
+---
+
+## ২.১ সরকারি উৎস অনুযায়ী hazard routing
+
+| ঝুঁকি | উৎস | লিড টাইম | এজেন্ট নির্দেশনা |
+|------|------|----------|----------------|
+| নদী বন্যা | FFWC + NEAP | ৫–১০ দিন | পানি ও স্থায়িত্ব ভিত্তিক প্রস্তুতি |
+| আকস্মিক বন্যা | BMD + local | কয়েক ঘণ্টা–৩ দিন | দ্রুত সরানো |
+| ভারী বৃষ্টি | BMD | ২৪–৭২ ঘণ্টা | drainage + safety |
+| ভূমিধস | BMD + INSTANT | কয়েক ঘণ্টা–৫ দিন | slope থেকে সরানো |
+| নদীভাঙন | local + BWDB | অনিশ্চিত | দ্রুত relocation |
+
+---
+
+## ২.২ Trigger Logic
+- পানি বাড়ছে কি না  
+- danger level  
+- forecast consistency  
+- duration  
+
+---
+
+## Rainfall Classification
+- ৪৪–৮৮ মিমি = heavy  
+- >৮৮ মিমি = very heavy  
+
+---
+
+## ভাষা ব্যবহারের নিয়ম
+✔ বলুন: “ঝুঁকি আছে”  
+✘ বলবেন না: “নিশ্চিত ধ্বংস হবে”  
+
+---
+
+# ৩. Retrieval Metadata Schema
+
+### ফিল্ডসমূহ
+- Location  
+- Hazard type  
+- Housing  
+- WASH  
+- Livelihood  
+- Vulnerability  
+- Preparedness  
+- Current condition  
+
+---
+
+# ৪. Agent Response Policy
+
+- ছোট ও স্পষ্ট  
+- ৩–৫টি করণীয়  
+- সহজ ভাষা  
+- closed question আগে  
+- evacuation হলে stay করতে বলবেন না  
+
+---
+
+## Three-message rule
+শেষে বলুন:
+1. কোথায় যাবেন  
+2. কী নেবেন  
+3. কোন কাজ বন্ধ করবেন  
+
+---
+
+# ৫. Hazard Routing Library
+
+## ৫.১ নদী বন্যা
+- ধীরে বাড়ে, দীর্ঘস্থায়ী  
+- আগে থেকেই প্রস্তুতি  
+
+## ৫.২ আকস্মিক বন্যা
+- দ্রুত পানি বাড়ে  
+- মানুষ আগে সরান  
+
+## ৫.৩ ভারী বৃষ্টি
+- drainage সমস্যা  
+- electrical ঝুঁকি  
+
+## ৫.৪ বাঁধ ভাঙা
+- life safety first  
+- দ্রুত সরে যান  
+
+## ৫.৫ ভূমিধস
+- slope থেকে সরান  
+- ফাটল দেখলে evacuation  
+
+## ৫.৬ নদীভাঙন
+- sudden displacement  
+- নথি আগে সরান  
+
+---
+
+# ৬. সময়ভিত্তিক নির্দেশনা
+
+## ৫–৭ দিন আগে
+- warning অনুসরণ  
+- shelter চিহ্নিত  
+
+## ৩–৪ দিন আগে
+- পানি সংরক্ষণ  
+- go-bag তৈরি  
+
+## ২৪–৪৮ ঘণ্টা আগে
+- early evacuation  
+- asset protection  
+
+## ৬–২৪ ঘণ্টা আগে
+- কাজ বন্ধ  
+- বিদ্যুৎ বন্ধ (নিরাপদ হলে)  
+
+## চলাকালীন
+- floodwater এড়ান  
+- safe water ব্যবহার  
+
+## পরে (২৪–৭২ ঘণ্টা)
+- পানি পরীক্ষা  
+- ঘর নিরাপদ হলে ফিরুন  
+
+---
+
+# ৭. Housing Guidance
+
+## ঝুপড়ি
+- সর্বোচ্চ ঝুঁকি  
+- আগে সরান  
+
+## কাঁচা
+- পানি ও ফাটল ঝুঁকি  
+- আগেই evacuation  
+
+## আধাপাকা
+- আংশিক নিরাপদ  
+- drainage গুরুত্বপূর্ণ  
+
+## পাকা
+- সম্পূর্ণ নিরাপদ নয়  
+- flood + isolation risk  
+
+## বিশেষ ঝুঁকি
+- চর  
+- নদীপাড়  
+- slope  
+
+---
+
+# ৮. WASH Guidance
+
+## Tube well
+- প্ল্যাটফর্ম ঢেকে দিন  
+- flood হলে unsafe ধরে নিন  
+
+## Surface water
+- পান করবেন না  
+
+## Latrine
+- overflow হলে ব্যবহার নয়  
+
+## Water storage
+- ঢাকনাযুক্ত পাত্র  
+
+## Hygiene
+- সাবান দিয়ে হাত ধোয়া  
+
+## Food safety
+- floodwater লাগলে ফেলে দিন  
+
+---
+
+# ৯. জীবিকা নির্দেশনা
+
+## কৃষক
+- পাকা ফসল কাটুন  
+
+## জেলে
+- নদীতে যাবেন না  
+
+## মাছচাষি
+- pond repair  
+- early harvest  
+
+## গবাদিপশু
+- আগে সরান  
+
+## দিনমজুর
+- cash + ID সুরক্ষা  
+
+## দোকানদার
+- stock উঁচুতে তুলুন  
+
+---
+
+# ১০. Vulnerability Guidance
+
+## গর্ভবতী
+- আগেভাগে সরান  
+
+## শিশু
+- floodwater থেকে দূরে  
+
+## প্রবীণ
+- আগে সরান  
+
+## প্রতিবন্ধী
+- সহায়তা পরিকল্পনা  
+
+## নারী/কিশোরী
+- privacy + নিরাপত্তা  
+
+---
+
+# ১১. Survey Design
+
+## Minimum Questions
+- warning জানেন?  
+- ঘরের ধরন?  
+- পানি ঢুকেছে?  
+- vulnerable member?  
+- evacuate পারবেন?  
+
+---
+
+## Structured Fields
+- hazard_type  
+- house_type  
+- current_status  
+- evacuation_ability  
+- livelihood  
+- wash_risk  
+
+---
+
+# ১২. Risk Scoring Logic
+
+### Input
+- hazard  
+- exposure  
+- vulnerability  
+- condition  
+- capacity  
+
+### Output
+- vulnerability class  
+- probable impact  
+- support need  
+
+---
+
+## Honesty Rule
+✔ “উচ্চ ঝুঁকি”  
+✘ “নিশ্চিত ক্ষতি”  
+
+---
+
+# ১৩. Example Messages
+
+### কাঁচা ঘর + পানি বাড়ছে
+আগেভাগে সরুন, ওষুধ ও নথি নিন  
+
+### ঢাল + ঝুপড়ি
+ফাটল দেখলে সাথে সাথে সরে যান  
+
+### কৃষক
+ফসল দ্রুত কেটে রাখুন  
+
+### tube well প্লাবিত
+পানি পান করবেন না  
+
+### জেলে
+নদীতে যাবেন না  
+
+---
+
+# ১৪. Red Flags (Escalation)
+
+- পানি দ্রুত ঢুকছে  
+- ভূমিধস লক্ষণ  
+- vulnerable member আটকে  
+- safe water নেই  
+- গুরুতর অসুস্থতা  
+- রাস্তা বিচ্ছিন্ন  
+
+---
+
+# ১৫. Chunking Design
+
+### Chunk Types
+- Hazard routing  
+- Timeline  
+- Housing  
+- WASH  
+- Livelihood  
+- Vulnerability  
+- Survey  
+- Escalation  
+
+---
+
+### Metadata Tags
+- hazard_type  
+- house_type  
+- livelihood  
+- phase  
+- action_priority  
+
+---
+
+# ১৬. References
+
+- NEAP Flood 2024  
+- FFWC  
+- BMD  
+- INSTANT portal  
+- WHO WASH  
+- CDC  
+- FAO  
+
+---
+
+## Final Reminder
+
+- life safety first  
+- safe water + medicine + early movement  
+- সরকারি নির্দেশ অমান্য নয়  

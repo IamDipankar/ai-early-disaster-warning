@@ -1,0 +1,233 @@
+# সাইক্লোন RAG প্লেবুক: এআই ভয়েস আর্লি ওয়ার্নিং এজেন্টের জন্য
+
+---
+
+---
+
+## প্রাথমিক উৎসভিত্তি
+- National Early Action Protocol (NEAP), জুন ২০২৪  
+- কক্সবাজার জেলার area context / trigger / capacity প্রোফাইল  
+
+---
+
+## কভারেজ
+- বাংলাদেশের উপকূলীয় ঘূর্ণিঝড় প্রস্তুতি নির্দেশনা
+- বাড়ির ধরন, WASH, জীবিকা, vulnerability, escalation rules  
+
+---
+
+## গুরুত্বপূর্ণ
+এই প্লেবুক:
+- সরকারি সতর্কতার সহায়ক  
+- কখনও BMD, CPP, স্থানীয় সরকার বা evacuation নির্দেশের বিরোধিতা করবে না  
+
+---
+
+# ১. এই ডকুমেন্ট কীভাবে ব্যবহার করবেন
+
+### ব্যবহার নির্দেশনা
+- hazard trigger দিয়ে warning বোঝুন  
+- personalization দিয়ে কাস্টমাইজ করুন  
+- response rules মেনে চলুন  
+- data extraction দিয়ে structured data তৈরি করুন  
+
+### এজেন্ট অপারেটিং নীতি
+- প্রথমে নিরাপত্তা নিশ্চিত করুন  
+- জরুরি হলে escalation mode  
+- সরকারি evacuation হলে বিতর্ক নয়  
+
+---
+
+# ২. Authoritative logic: hazard thresholds, lead time, and warning signals
+
+## Hazard Threshold
+
+| Hazard component   | Low impact | Medium impact | High impact  | Very high impact |
+| ------------------ | ---------- | ------------- | ------------ | ---------------- |
+| Wind speed         | 62–88 km/h | 89–117 km/h   | 118–221 km/h | ≥222 km/h        |
+| Storm surge height | <1.5 m     | 1.5–3.5 m     | 3.6–5.0 m    | >5.0 m           |
+| 72-hour rainfall   | <150 mm    | 150–200 mm    | 200–250 mm   | >250 mm          |
+
+---
+
+## Lead Time Logic
+
+| Lead time / likelihood           | Operational meaning                                                                                       | Suggested agent tone            |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| 36–48 hours (High likelihood)    | Hazard is highly likely and actions should move beyond awareness into preparation / relocation readiness. | Direct, urgent, but calm        |
+| 48–72 hours (Medium likelihood)  | Hazard likely enough for pre-positioning, household protection, and shelter planning.                     | Preparatory and action-oriented |
+| 72–120 hours (Low likelihood)    | Monitor closely; begin low-cost no-regret actions.                                                        | Advisory and early preparation  |
+| >120 hours (Very low likelihood) | Regular monitoring only unless local conditions worsen.                                                   | Informational                   |
+
+---
+
+## CPP / BMD Signal
+
+| Signal | Meaning | Agent Instruction |
+|--------|---------|-------------------|
+| 1–3 | Awareness | আপডেট অনুসরণ করুন |
+| 4 | Warning | আশ্রয়কেন্দ্র নির্ধারণ করুন |
+| 5–7 | Potential Impact | দ্রুত প্রস্তুতি নিন |
+| 8–10 | Danger | দ্রুত আশ্রয়কেন্দ্র/নিরাপদ স্থানে সরে যান |
+
+---
+
+## গুরুত্বপূর্ণ নিয়ম
+- উচ্চ surge হলে পাকা ঘরও অনিরাপদ  
+- বৃষ্টি → landslide ও road cut-off  
+
+---
+
+# ৪. Metadata Schema
+
+### প্রয়োজনীয় ফিল্ড
+- Location  
+- Hazard context  
+- Housing type  
+- Water & sanitation  
+- Livelihood  
+- Vulnerable members  
+- Preparedness  
+
+---
+
+# ৫. Response Policy
+
+| Rule                     | Operational guidance   |
+| ------------------------ | ---------------------- |
+| Keep it short            | 3–5 actions            |
+| Use local plain language | Avoid technical jargon |
+| Do not over-promise      | Use official sources   |
+| Confirm understanding    | Ask a check question   |
+| Escalate risk            | Flag urgent cases      |
+
+---
+
+# ৬. সময়ভিত্তিক Guidance
+
+## ৭২–১২০ ঘণ্টা আগে
+- update অনুসরণ  
+- shelter route নির্ধারণ  
+- খাবার, পানি, ওষুধ প্রস্তুত  
+
+## ৪৮–৭২ ঘণ্টা আগে
+- grab-bag প্রস্তুত  
+- পানি সংরক্ষণ  
+- সম্পদ উঁচুতে রাখুন  
+
+## ৩৬–৪৮ ঘণ্টা আগে
+- early evacuation  
+- vulnerable member সরান  
+
+## সিগন্যাল ৮–১০
+- সব কাজ বন্ধ  
+- তাৎক্ষণিক সরে যান  
+
+---
+
+# ৭. Housing Guidance
+(after knowing the housing time give short contextualized instruction)
+
+| ধরন | নির্দেশনা |
+|------|----------|
+| ঝুপড়ি | দ্রুত সরে যান |
+| কাঁচা | বেঁধে দিন + সরান |
+| সেমি-পাকা | প্রস্তুত থাকুন |
+| পাকা | নিরাপদ হলে থাকুন, নাহলে সরুন |
+
+---
+
+# ৮. WASH Guidance
+
+- tube well ঢেকে দিন  
+- পানি সংরক্ষণ করুন  
+- latrine বেঁধে দিন  
+- hygiene item প্রস্তুত রাখুন  
+
+---
+
+# ৯. জীবিকা নির্দেশনা
+
+## জেলে
+- সমুদ্রে যাবেন না  
+- দ্রুত ফিরে আসুন  
+
+## মাছচাষি
+- pond secure করুন  
+- harvest করুন  
+
+## কৃষক
+- পাকা ফসল কাটুন  
+
+## গবাদিপশু
+- আগেভাগে সরান  
+
+---
+
+# ১০. Vulnerability Guidance
+
+| গ্রুপ | নির্দেশনা |
+|------|----------|
+| গর্ভবতী | আগেভাগে সরান |
+| শিশু | সবসময় সাথে রাখুন |
+| প্রবীণ | আগে সরান |
+| প্রতিবন্ধী | সহায়তা নিশ্চিত |
+
+---
+
+# ১১. Essentials
+
+- শুকনা খাবার  
+- নথি waterproof করুন  
+- ওষুধ  
+- নগদ টাকা  
+
+---
+
+# ১২. Escalation Rule
+
+| Trigger | Action | Flag |
+|--------|--------|------|
+| evacuate করতে পারছে না | escalate | evacuation_barrier |
+| পানি বাড়ছে | move now | flood |
+| ঝুঁকিপূর্ণ ঘর | early evacuation | housing_risk |
+| জেলে সমুদ্রে | return now | marine_exposure |
+| প্রয়োজনীয় জিনিস নেই | prepare | essential_gap |
+
+---
+
+# ১৩. Data Extraction Schema
+
+- call_status  
+- warning_awareness  
+- housing_type  
+- livelihood  
+- vulnerable_members  
+- priority_class  
+
+---
+
+# ১৪. RAG Design
+
+### Chunk Types
+- Trigger  
+- Housing  
+- WASH  
+- Livelihood  
+- Vulnerability  
+
+---
+
+### Generation Template
+1. Situation  
+2. Top 3 actions  
+3. Confirmation  
+4. Extraction  
+5. Closure  
+
+
+# Final Reminder
+
+- life safety > asset protection  
+- safe water + medicine + family unity + early movement = priority  
+- কখনও সরকারি নির্দেশ অমান্য নয়  

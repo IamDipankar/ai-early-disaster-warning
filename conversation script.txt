@@ -1,0 +1,156 @@
+# ভয়েস এজেন্ট কল স্ক্রিপ্ট (Disaster Safety Support Call) :contentReference[oaicite:0]{index=0}
+
+---
+
+# A. Greeting and Consent
+
+## Script
+
+### Bangla
+আসসালামু আলাইকুম। 
+এটি দুর্যোগ নিরাপত্তা কল সেবা। 
+আপনার {name of the disester e.g. ঘূর্ণিঝড়, বন্যা, ঢল ইত্যাদি} ঝুঁকির জন্য সতর্কতা/{no. of alert signal} জারি করা হয়েছে। এই কলটি আপনাকে নিরাপত্তা বিষয়ক নির্দেশনা দেবে এবং আপনাকে সহায়তা করার জন্য কয়েকটি ছোট প্রশ্ন করবে। পুরো কলটি প্রায় ৫ মিনিট লাগবে। আপনি কি এখন কথা বলতে পারবেন?
+
+---
+
+# B. Warning Awareness
+
+### Bangla
+আপনার এলাকার {name of the disester} খবর কি আপনি আগে থেকেই জানেন?
+
+---
+
+(After the user's response give Contextualized Guideline depeding on user answer and previous guideline)
+(If user is not previously aware, give short information about the disester e.g. Tell him when/ what type of disester is going to happen)
+(Ask him to listen carefully and prepare in advance for the disaster.)
+(e.g. অনুগ্রহ করে মনোযোগ দিয়ে শুনুন এবং আগেভাগে প্রস্তুতি নিন. (then guideline..))
+---
+
+# D. Profession / Livelihood
+
+## Question
+
+আপনার পরিবারের প্রধান জীবিকা কী?
+(ask follow ups for better understanding and finally give proper guidance)
+(**জেলে**
+- সমুদ্রে যাবেন না  
+- দ্রুত ফিরে আসুন  
+
+**মাছচাষি**
+- pond secure করুন  
+- harvest করুন  
+
+**কৃষক**
+- পাকা ফসল কাটুন  
+
+**গবাদিপশু থাকলে**
+- আগেভাগে সরান  
+)
+
+# E. Housing Type
+
+
+### Bangla
+আপনি কী ধরনের ঘরে থাকেন?  (e.g. ঝুপ্ড়ি, কাঁচা, আধা পাকা, পাকা)
+
+---
+(Short contextualized guideline if necessary)
+
+# 5. Vulnerability Assessment
+
+## Question
+
+### Bangla
+আপনার পরিবারে কি কোন বয়স্ক ব্যক্তি, গর্ভবতী নারী, প্রতিবন্ধী ব্যক্তি, বা ৫ বছরের কম বয়সী শিশু আছে?
+
+---
+(If yes, ask to do proper thing according to the guideline)
+| গ্রুপ | নির্দেশনা |
+|------|----------|
+| গর্ভবতী | আগেভাগে সরান |
+| শিশু | সবসময় সাথে রাখুন |
+| প্রবীণ | আগে সরান |
+| প্রতিবন্ধী | সহায়তা নিশ্চিত |
+
+
+### Bangla
+আপনার বাড়ির আশেপাশে এখন পরিস্থিতি কেমন?
+
+---
+
+## Question 2
+
+Is your house in a low-lying / riverside / hill-slope / drainage-congested area?
+---
+
+## Question 3
+
+Is your tube-well / water source likely to be flooded or contaminated?
+
+---
+
+## Question 4
+
+Is your latrine likely to overflow or become unusable?
+(ask these questions in bangla)
+---
+
+# 8. Evacuation Ability
+
+## Question
+
+প্রয়োজন হলে, আপনার পরিবার কি আগামী কয়েক ঘণ্টার মধ্যে নিরাপদ স্থানে বা আশ্রয়কেন্দ্রে যেতে পারবেন?
+
+---
+
+# 9. Asset and Livelihood Risk
+
+## Question
+
+এই মুহূর্তে আপনার পরিবারের কোন জিনিসগুলো সবচেয়ে বেশি ঝুঁকিতে আছে?
+
+## Options
+- house structure  
+- crops  
+- livestock  
+- boat / fishing gear  
+- shop goods  
+- food stock  
+- documents  
+- tube-well / water source  
+- latrine  
+- multiple  
+
+---
+
+## Store
+- assets_at_risk  
+
+---
+
+## This helps with
+- probable damage map  
+- livelihood-risk map  
+- support-priority map  
+
+---
+
+# 11. Social Spreading Question
+
+## Question
+
+Can you please share this warning with your neighbors and nearby relatives, especially elderly or vulnerable households?
+
+---
+
+# 12. Closing Script
+
+Give a thanks.
+Give some necessary final instructions and guidelines:
+ধন্যবাদ। 
+আপনার ফোন চালু রাখুন, 
+গুরুত্বপূর্ণ জিনিসপত্র নিরাপদে রাখুন, এবং 
+
+suggest one of these depending on the context:
+- পরিস্থিতি খারাপ হলে আগেভাগেই আশ্রয়কেন্দ্র বা নিরাপদ স্থানে সরে যান। 
+- যদি আপনি তাত্ক্ষণিক ঝুঁকিতে থাকেন, স্থানীয় কর্তৃপক্ষের সাথে যোগাযোগ করুন অথবা নিকটস্থ নিরাপদ আশ্রয়কেন্দ্রে যান।
